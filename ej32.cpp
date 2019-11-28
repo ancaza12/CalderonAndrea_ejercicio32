@@ -20,7 +20,7 @@ const double phi2=0.0;
 
 //Condiciones:
 double xi = 0;
-double xf = 1.0;
+double xf = 0.1;
 double phi0 = 0.0;
 double ti = 0.0;
 double L = 1;
@@ -40,13 +40,14 @@ void eq (string nombre){
 	ofstream file;
 	file.open(nombre);
 	float datosp[Nx][Nx];
-	float datosn[Nx][Nx];
 	double s=s0;
 	double phi = phi0;
 	for (int n = 0; n < 10; n++){
 		for (int j= -1; j< xf; j++){
             if(n==0){
                 datosp[n][j] = 0;
+			file << n <<" "<< j<< " " << datosp[n][j] << std::endl;                
+                
             }
             
             else{
@@ -54,9 +55,8 @@ void eq (string nombre){
 			
 			datosp[n][j]= dphi;
 			file << n <<" "<< j<< " " << datosp[n][j] << std::endl;                
-                
-            }
-
+            }           
+            
 		}
 	}
 	file.close();
